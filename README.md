@@ -38,10 +38,10 @@ Theese are the important publish settings:
 
 ### Build PCRemoteControlSetup installer
 
-Build PCRemoteControlSetup project with the Release configuration.
+Build the PCRemoteControlSetup project with the Release configuration.
 
-Installer is then located here:
+The MSI installer is then located here:
 
 ```
-[VSProjectsFolder]\PCRemoteControl\PCRemoteControlSetup\bin\x64\Release\PCRemoteControlSetup.msi
+[VSProjectsFolder]\PCRemoteControl\PCRemoteControlSetup\bin\x64\Release\
 ```
