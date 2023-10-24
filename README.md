@@ -1,4 +1,4 @@
-# PCRemoteControl
+# PCRemoteControl (work in progress)
 
 A windows service that makes it possible to control the keyboard and mouse on the PC remotely from a browser.
 
