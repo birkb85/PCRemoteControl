@@ -15,17 +15,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <Configuration>Release</Configuration>
-    <Platform>Any CPU</Platform>
-    <PublishDir>bin\Release\net7.0\publish\win-x64\</PublishDir>
-    <PublishProtocol>FileSystem</PublishProtocol>
+    <DeleteExistingFiles>false</DeleteExistingFiles>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
+    <LaunchSiteAfterPublish>true</LaunchSiteAfterPublish>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <PublishProvider>FileSystem</PublishProvider>
+    <PublishUrl>bin\Release\net7.0\publish\</PublishUrl>
+    <WebPublishMethod>FileSystem</WebPublishMethod>
     <_TargetId>Folder</_TargetId>
+    <SiteUrlToLaunchAfterPublish />
     <TargetFramework>net7.0</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <SelfContained>true</SelfContained>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <PublishTrimmed>false</PublishTrimmed>
+    <ProjectGuid>cd43d481-aca3-4f17-b699-afe102bb6123</ProjectGuid>
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 </Project>
 ```

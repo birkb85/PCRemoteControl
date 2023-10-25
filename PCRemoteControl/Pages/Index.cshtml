@@ -1,0 +1,45 @@
+﻿@page
+@model PCRemoteControl.Pages.IndexModel
+@{
+}
+
+@* TODO BB 2023-10-25. Der mangler Head Body og alt det der.. *@
+<p>Hej med dig!</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.11/signalr.min.js" integrity="sha512-BmbgtaebZ4BB5jiHMIauI5fFKc7dXo0Hqm7nmkHnoq63qBaYQWg1bhcNoaIBkfpw5bymrPEM8ap2fCB6ObSK4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    let connection = new signalR.HubConnectionBuilder()
+        .withUrl("/controlhub")
+        .configureLogging(signalR.LogLevel.Warning) // Trace, Information, Warning, Error
+        .build();
+
+    connection.onclose(async () => {
+        // connectedIcon.style.color = "#e11e1e";
+        await connectionStart();
+    });
+
+    async function connectionStart() {
+        try {
+            // connectedIcon.style.color = "#e11e1e";
+            await connection.start();
+            console.log("SignalR Connected.");
+
+            mouseMove(100, 100); /* TODO BB 2023-10-25. Tester at flytte musen et stykke når man er forbundet. */
+            // connectedIcon.style.color = "#1ee11e";
+        } catch (err) {
+            console.log(err);
+            // connectedIcon.style.color = "#e11e1e";
+            setTimeout(connectionStart, 5000);
+        }
+    };
+
+    function mouseMove(amountX, amountY) {
+        if (connection.state === signalR.HubConnectionState.Connected) {
+            connection.invoke("MouseMove", amountX, amountY).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    connectionStart();
+</script>

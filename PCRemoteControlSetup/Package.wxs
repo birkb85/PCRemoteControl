@@ -30,6 +30,23 @@
 		<!-- The files inside this DirectoryRef are linked to
              the App.WindowsService directory via INSTALLFOLDER -->
 		<DirectoryRef Id="INSTALLFOLDER">
+			
+			<!-- Additional files -->
+			<Component Id="appsettings.json" Bitness="always64">
+				<File Id="appsettings.json"
+					  Source="$(var.PCRemoteControl.TargetDir)publish\appsettings.json"
+					  KeyPath="true"/>
+			</Component>
+			<Component Id="aspnetcorev2_inprocess.dll" Bitness="always64">
+				<File Id="aspnetcorev2_inprocess.dll"
+					  Source="$(var.PCRemoteControl.TargetDir)publish\aspnetcorev2_inprocess.dll"
+					  KeyPath="true"/>
+			</Component>
+			<Component Id="web.config" Bitness="always64">
+				<File Id="web.config"
+					  Source="$(var.PCRemoteControl.TargetDir)publish\web.config"
+					  KeyPath="true"/>
+			</Component>
 
 			<!-- Create a single component which is the App.WindowsService.exe file -->
 			<Component Id="ServiceExecutable" Bitness="always64">
@@ -37,7 +54,7 @@
 				<!-- Copies the App.WindowsService.exe file using the
                      project reference preprocessor variables -->
 				<File Id="PCRemoteControl.exe"
-                      Source="$(var.PCRemoteControl.TargetDir)publish\win-x64\PCRemoteControl.exe"
+                      Source="$(var.PCRemoteControl.TargetDir)publish\PCRemoteControl.exe"
                       KeyPath="true" />
 
 				<!-- Remove all files from the INSTALLFOLDER on uninstall -->
@@ -64,6 +81,9 @@
 
 		<!-- Tell WiX to install the files -->
 		<Feature Id="Service" Title="PCRemoteControl Setup" Level="1">
+			<ComponentRef Id="appsettings.json" />
+			<ComponentRef Id="aspnetcorev2_inprocess.dll" />
+			<ComponentRef Id="web.config" />
 			<ComponentRef Id="ServiceExecutable" />
 		</Feature>
 
