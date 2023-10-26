@@ -9,6 +9,15 @@ const CONTROLHUB_MOUSE_LEFT_CLICK = "MouseLeftClick";
 const CONTROLHUB_MOUSE_RIGHT_CLICK = "MouseRightClick";
 const CONTROLHUB_MOUSE_SCROLL_VERTICAL = "MouseScrollVertical";
 const CONTROLHUB_MOUSE_SCROLL_HORIZONTAL = "MouseScrollHorizontal";
+const CONTROLHUB_KEYBOARD = "Keyboard";
+const CONTROLHUB_KEYBOARD_BACKSPACE = "KeyboardBackspace";
+const CONTROLHUB_KEYBOARD_ENTER = "KeyboardEnter";
+const CONTROLHUB_KEYBOARD_LEFT_ARROW = "KeyboardLeftArrow";
+const CONTROLHUB_KEYBOARD_RIGHT_ARROW = "KeyboardRightArrow";
+const CONTROLHUB_KEYBOARD_PLAY_PAUSE = "KeyboardPlayPause";
+const CONTROLHUB_KEYBOARD_VOLUME_MUTE = "KeyboardVolumeMute";
+const CONTROLHUB_KEYBOARD_VOLUME_DOWN = "KeyboardVolumeDown";
+const CONTROLHUB_KEYBOARD_VOLUME_UP = "KeyboardVolumeUp";
 
 class ControlHub {
     constructor() {
@@ -67,6 +76,78 @@ class ControlHub {
     mouseScrollHorizontal(amount) {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_SCROLL_HORIZONTAL, amount).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboard(text) {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD, text).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardBackspace() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_BACKSPACE).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardEnter() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_ENTER).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardLeftArrow() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_LEFT_ARROW).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardRightArrow() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_RIGHT_ARROW).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardPlayPause() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_PLAY_PAUSE).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardVolumeMute() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_MUTE).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardVolumeDown() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_DOWN).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    keyboardVolumeUp() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_UP).catch(function (err) {
                 return console.error(err.toString());
             });
         }

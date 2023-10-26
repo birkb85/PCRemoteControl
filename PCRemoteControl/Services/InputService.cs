@@ -11,6 +11,7 @@ namespace PCRemoteControl.Services;
 public sealed class InputService
 {
     // Source: https://www.codeproject.com/Articles/5264831/How-to-Send-Inputs-using-Csharp
+    // Keyboard virtual keycodes: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
     // Keyboard scancodes: https://www.win.tue.nl/~aeb/linux/kbd/scancodes-1.html
     // Keyboard unicodes: https://www.compart.com/en/unicode/U+0077
 
@@ -427,9 +428,8 @@ public sealed class InputService
                 {
                     ki = new KeyboardInput
                     {
-                        wVk = 0,
-                        wScan = 0x0e,
-                        dwFlags = (uint)(KeyEventF.KeyDown | KeyEventF.Scancode),
+                        wVk = 0x08,
+                        dwFlags = (uint)KeyEventF.KeyDown,
                         dwExtraInfo = GetMessageExtraInfo()
                     }
                 }
@@ -441,9 +441,8 @@ public sealed class InputService
                 {
                     ki = new KeyboardInput
                     {
-                        wVk = 0,
-                        wScan = 0x0e,
-                        dwFlags = (uint)(KeyEventF.KeyUp | KeyEventF.Scancode),
+                        wVk = 0x08,
+                        dwFlags = (uint)KeyEventF.KeyUp,
                         dwExtraInfo = GetMessageExtraInfo()
                     }
                 }
@@ -464,9 +463,8 @@ public sealed class InputService
                 {
                     ki = new KeyboardInput
                     {
-                        wVk = 0,
-                        wScan = 0x1c,
-                        dwFlags = (uint)(KeyEventF.KeyDown | KeyEventF.Scancode),
+                        wVk = 0x0d,
+                        dwFlags = (uint)KeyEventF.KeyDown,
                         dwExtraInfo = GetMessageExtraInfo()
                     }
                 }
@@ -478,9 +476,218 @@ public sealed class InputService
                 {
                     ki = new KeyboardInput
                     {
-                        wVk = 0,
-                        wScan = 0x1c,
-                        dwFlags = (uint)(KeyEventF.KeyUp | KeyEventF.Scancode),
+                        wVk = 0x0d,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
+
+    public void KeyboardLeftArrow()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0x25,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0x25,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
+
+    public void KeyboardRightArrow()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0x27,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0x27,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
+
+    public void KeyboardPlayPause()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xb3,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xb3,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
+
+    public void KeyboardVolumeMute()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xad,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xad,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
+
+    public void KeyboardVolumeDown()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xae,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xae,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
+
+    public void KeyboardVolumeUp()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xaf,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0xaf,
+                        dwFlags = (uint)KeyEventF.KeyUp,
                         dwExtraInfo = GetMessageExtraInfo()
                     }
                 }

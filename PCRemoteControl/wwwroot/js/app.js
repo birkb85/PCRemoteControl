@@ -43,14 +43,54 @@ function appUpdate() {
             controls.mouseMoveY = 0;
         }
 
-        if (controls.leftClicked) {
+        if (controls.mouseLeftClicked) {
             controlHub.mouseLeftClick();
-            controls.leftClicked = false;
+            controls.mouseLeftClicked = false;
         }
 
-        if (controls.rightClicked) {
+        if (controls.mouseRightClicked) {
             controlHub.mouseRightClick();
-            controls.rightClicked = false;
+            controls.mouseRightClicked = false;
+        }
+
+        if (controls.keyboardBackspaceClicked) {
+            controlHub.keyboardBackspace();
+            controls.keyboardBackspaceClicked = false;
+        }
+
+        if (controls.keyboardEnterClicked) {
+            controlHub.keyboardEnter();
+            controls.keyboardEnterClicked = false;
+        }
+
+        if (controls.keyboardLeftArrowClicked) {
+            controlHub.keyboardLeftArrow();
+            controls.keyboardLeftArrowClicked = false;
+        }
+
+        if (controls.keyboardRightArrowClicked) {
+            controlHub.keyboardRightArrow();
+            controls.keyboardRightArrowClicked = false;
+        }
+
+        if (controls.keyboardPlayPauseClicked) {
+            controlHub.keyboardPlayPause();
+            controls.keyboardPlayPauseClicked = false;
+        }
+
+        if (controls.keyboardVolumeMuteClicked) {
+            controlHub.keyboardVolumeMute();
+            controls.keyboardVolumeMuteClicked = false;
+        }
+
+        if (controls.keyboardVolumeDownClicked) {
+            controlHub.keyboardVolumeDown();
+            controls.keyboardVolumeDownClicked = false;
+        }
+
+        if (controls.keyboardVolumeUpClicked) {
+            controlHub.keyboardVolumeUp();
+            controls.keyboardVolumeUpClicked = false;
         }
     }
 }

@@ -14,14 +14,23 @@ class Controls {
         this.mouseMoveX = 0;
         this.mouseMoveY = 0;
 
-        this.leftClicked = false;
-        this.rightClicked = false;
+        this.mouseLeftClicked = false;
+        this.mouseRightClicked = false;
 
         this.touchStartTime = Date.now();
         this.touchStartMouseX = 0;
         this.touchStartMouseY = 0;
         this.touchClickTimeout = 400;
         this.touchClickDist = 20;
+
+        this.keyboardBackspaceClicked = false;
+        this.keyboardEnterClicked = false;
+        this.keyboardLeftArrowClicked = false;
+        this.keyboardRightArrowClicked = false;
+        this.keyboardPlayPauseClicked = false;
+        this.keyboardVolumeMuteClicked = false;
+        this.keyboardVolumeDownClicked = false;
+        this.keyboardVolumeUpClicked = false;
     }
 
     touchStart(x, y) {
@@ -56,19 +65,59 @@ class Controls {
         if (Date.now() - this.touchStartTime < this.touchClickTimeout &&
             Math.abs(this.mouseX - this.touchStartMouseX) < this.touchClickDist &&
             Math.abs(this.mouseY - this.touchStartMouseY) < this.touchClickDist) {
-            this.leftClicked = true;
+            this.mouseLeftClicked = true;
         }
 
         this.hasUpdate = true;
     }
 
-    leftClick() {
-        this.leftClicked = true;
+    mouseLeftClick() {
+        this.mouseLeftClicked = true;
         this.hasUpdate = true;
     }
 
-    rightClick() {
-        this.rightClicked = true;
+    mouseRightClick() {
+        this.mouseRightClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardBackspaceClick() {
+        this.keyboardBackspaceClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardEnterClick() {
+        this.keyboardEnterClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardLeftArrowClick() {
+        this.keyboardLeftArrowClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardRightArrowClick() {
+        this.keyboardRightArrowClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardPlayPauseClick() {
+        this.keyboardPlayPauseClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardVolumeMuteClick() {
+        this.keyboardVolumeMuteClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardVolumeDownClick() {
+        this.keyboardVolumeDownClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardVolumeUpClick() {
+        this.keyboardVolumeUpClicked = true;
         this.hasUpdate = true;
     }
 }

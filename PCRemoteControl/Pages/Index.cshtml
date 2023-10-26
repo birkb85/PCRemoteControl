@@ -10,47 +10,29 @@
     <script src="~/js/events.js" asp-append-version="true"></script>
 }
 
+@* TODO BB. iOS: Når man dobbeltklikker i toppen zoomer den ind. Få den til at lade være. *@
+@* TODO BB. Android: Vinduet fylder for meget så man skal scrolle for at se museknapperne i bunden. Find løsning. *@
+
 <div class="container-fluid">
     <div class="flex-container">
         <header id="header">
             <div class="row pt-2 pb-2">
-                <div class="col">
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-backward"></i></button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-forward"></i></button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-play"></i> / <i class="fas fa-pause"></i></button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-mute"></i></button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-down"></i></button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-up"></i></button>
-                    </div>
+                <div class="col text-center">
+                    <button onclick="controls.keyboardLeftArrowClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-backward"></i></button>
+                    <button onclick="controls.keyboardRightArrowClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-forward"></i></button>
+                    <button onclick="controls.keyboardPlayPauseClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
+                    <button onclick="controls.keyboardVolumeMuteClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-mute"></i></button>
+                    <button onclick="controls.keyboardVolumeDownClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-down"></i></button>
+                    <button onclick="controls.keyboardVolumeUpClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-up"></i></button>
                 </div>
             </div>
             <div class="row pb-2">
                 <div class="col">
                     <div class="input-group input-group-lg">
+                        @* TODO BB! Send tekst afsted og clear input felt når man gør det. *@
                         <input type="text" class="form-control" placeholder="">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-backspace"></i></button>
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-check"></i></button>
+                        <button onclick="controls.keyboardBackspaceClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-backspace"></i></button>
+                        <button onclick="controls.keyboardEnterClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-check"></i></button>
                     </div>
                 </div>
             </div>
@@ -63,12 +45,12 @@
             <div class="row pt-2 pb-2">
                 <div class="col">
                     <div class="d-grid">
-                        <button onclick="controls.leftClick()" type="button" class="btn btn-primary btn-lg">Left</button>
+                        <button onclick="controls.mouseLeftClick()" type="button" class="btn btn-primary btn-lg">Left</button>
                     </div>
                 </div>
                 <div class="col">
                     <div class="d-grid">
-                        <button onclick="controls.rightClick()" type="button" class="btn btn-primary btn-lg">Right</button>
+                        <button onclick="controls.mouseRightClick()" type="button" class="btn btn-primary btn-lg">Right</button>
                     </div>
                 </div>
             </div>
