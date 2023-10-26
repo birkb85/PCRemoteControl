@@ -1,7 +1,12 @@
-/*body {
-    padding: 0;
-    margin: 0;
-}*/
+body {
+    /*padding: 0;
+    margin: 0;*/
+    /* 
+        Disable double tap to zoom on iOS.
+        https://dev.to/jasperreddin/disabling-viewport-zoom-on-ios-14-web-browsers-l13
+    */
+    touch-action: pan-y;
+}
 
 .flex-container {
     display: flex;
