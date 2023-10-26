@@ -37,6 +37,8 @@ class Controls {
     touchStart(x, y) {
         this.mouseDown = true;
 
+        textInput.blur();
+
         this.mouseX = Math.round(x);
         this.mouseY = Math.round(y);
         this.mouseOldX = this.mouseX;
