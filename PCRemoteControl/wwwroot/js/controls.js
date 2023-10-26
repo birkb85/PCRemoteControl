@@ -10,6 +10,8 @@ class Controls {
         this.mouseOldY = 0;
         this.mouseMoveX = 0;
         this.mouseMoveY = 0;
+        this.leftClicked = false;
+        this.rightClicked = false;
     }
 
     touchStart(x, y) {
@@ -36,6 +38,16 @@ class Controls {
 
     touchEnd() {
         this.mouseDown = false;
+        this.hasUpdate = true;
+    }
+
+    leftClick() {
+        this.leftClicked = true;
+        this.hasUpdate = true;
+    }
+
+    rightClick() {
+        this.rightClicked = true;
         this.hasUpdate = true;
     }
 }

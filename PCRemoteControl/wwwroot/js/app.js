@@ -42,5 +42,15 @@ function appUpdate() {
             controls.mouseMoveX = 0;
             controls.mouseMoveY = 0;
         }
+
+        if (controls.leftClicked) {
+            controlHub.mouseLeftClick();
+            controls.leftClicked = false;
+        }
+
+        if (controls.rightClicked) {
+            controlHub.mouseRightClick();
+            controls.rightClicked = false;
+        }
     }
 }

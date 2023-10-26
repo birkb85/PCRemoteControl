@@ -5,6 +5,10 @@
 
 // Server Events
 const CONTROLHUB_MOUSE_MOVE = "MouseMove";
+const CONTROLHUB_MOUSE_LEFT_CLICK = "MouseLeftClick";
+const CONTROLHUB_MOUSE_RIGHT_CLICK = "MouseRightClick";
+const CONTROLHUB_MOUSE_SCROLL_VERTICAL = "MouseScrollVertical";
+const CONTROLHUB_MOUSE_SCROLL_HORIZONTAL = "MouseScrollHorizontal";
 
 class ControlHub {
     constructor() {
@@ -31,6 +35,38 @@ class ControlHub {
     mouseMove(amountX, amountY) {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_MOVE, amountX, amountY).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    mouseLeftClick() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_MOUSE_LEFT_CLICK).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    mouseRightClick() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_MOUSE_RIGHT_CLICK).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    mouseScrollVertical(amount) {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_MOUSE_SCROLL_VERTICAL, amount).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    }
+
+    mouseScrollHorizontal(amount) {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_MOUSE_SCROLL_HORIZONTAL, amount).catch(function (err) {
                 return console.error(err.toString());
             });
         }

@@ -20,4 +20,24 @@ public class ControlHub : Hub
     {
         inputService.MouseMove(amountX, amountY);
     }
+
+    public void MouseLeftClick()
+    {
+        inputService.MouseLeftClick();
+    }
+
+    public void MouseRightClick()
+    {
+        inputService.MouseRightClick();
+    }
+
+    public void MouseScrollVertical(int amount)
+    {
+        inputService.MouseScrollVertical(amount);
+    }
+
+    public void MouseScrollHorizontal(int amount)
+    {
+        inputService.MouseScrollHorizontal(amount);
+    }
 }
