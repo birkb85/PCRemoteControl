@@ -4,6 +4,7 @@
 const header = document.getElementById("header");
 const content = document.getElementById("content");
 const footer = document.getElementById("footer");
+const textInput = document.getElementById("textInput");
 
 // Time passed
 let timeStampOld = 0;
@@ -51,6 +52,11 @@ function appUpdate() {
         if (controls.mouseRightClicked) {
             controlHub.mouseRightClick();
             controls.mouseRightClicked = false;
+        }
+
+        if (controls.keyboardText !== "") {
+            controlHub.keyboard(controls.keyboardText);
+            controls.keyboardText = "";
         }
 
         if (controls.keyboardBackspaceClicked) {

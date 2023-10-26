@@ -1,5 +1,16 @@
 ﻿"use strict";
 
+// Text Input
+function textInputKeyup(event) {
+    /*let value = event.target.value;*/
+    if (event.keyCode == 13) {
+        controls.keyboardTextInput(textInput.value);
+        textInput.value = "";
+    }
+    //console.log("Key Up: " + event.keyCode);
+}
+textInput.onkeyup = textInputKeyup;
+
 // Mouse
 function mouseMoveEvent(event) {
     if (event.type === "mousemove" && event.target.id === "content") {

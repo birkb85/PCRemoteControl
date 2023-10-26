@@ -23,6 +23,7 @@ class Controls {
         this.touchClickTimeout = 400;
         this.touchClickDist = 20;
 
+        this.keyboardText = "";
         this.keyboardBackspaceClicked = false;
         this.keyboardEnterClicked = false;
         this.keyboardLeftArrowClicked = false;
@@ -78,6 +79,11 @@ class Controls {
 
     mouseRightClick() {
         this.mouseRightClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardTextInput(text) {
+        this.keyboardText += text;
         this.hasUpdate = true;
     }
 
