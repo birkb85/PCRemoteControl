@@ -3,10 +3,18 @@
 // Text Input
 function textInputKeyup(event) {
     /*let value = event.target.value;*/
-    if (event.keyCode == 13) {
-        controls.keyboardTextInput(textInput.value);
+
+    if (event.keyCode == 8) {
+        // Backspace
+        controls.keyboardBackspaceClick();
+    } else if (event.keyCode == 13) {
+        // Enter
+        controls.keyboardEnterClick();
+    } else {
+        controls.keyboardTextInput(event.target.value);
         textInput.value = "";
     }
+
     //console.log("Key Up: " + event.keyCode);
 }
 textInput.onkeyup = textInputKeyup;
