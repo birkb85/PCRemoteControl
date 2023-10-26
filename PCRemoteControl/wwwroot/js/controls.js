@@ -13,6 +13,7 @@ class Controls {
 
         this.mouseMoveX = 0;
         this.mouseMoveY = 0;
+        this.mouseMoveMultiplier = 1.5;
 
         this.mouseLeftClicked = false;
         this.mouseRightClicked = false;
@@ -54,8 +55,8 @@ class Controls {
     touchMove(x, y) {
         this.mouseX = Math.round(x);
         this.mouseY = Math.round(y);
-        this.mouseMoveX += this.mouseX - this.mouseOldX;
-        this.mouseMoveY += this.mouseY - this.mouseOldY;
+        this.mouseMoveX += Math.round((this.mouseX - this.mouseOldX) * this.mouseMoveMultiplier);
+        this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.mouseMoveMultiplier);
         this.mouseOldX = this.mouseX;
         this.mouseOldY = this.mouseY;
 
