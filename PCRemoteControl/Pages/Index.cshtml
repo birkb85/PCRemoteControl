@@ -10,12 +10,10 @@
     <script src="~/js/events.js" asp-append-version="true"></script>
 }
 
-@* TODO BB. Android: Vinduet fylder for meget så man skal scrolle for at se museknapperne i bunden. Find løsning. *@
-
 <div class="container-fluid">
     <div class="flex-container">
         <header id="header">
-            <div class="row pt-2 pb-2">
+            <div class="row pt-4 pb-4">
                 <div class="col text-center">
                     <button onclick="controls.keyboardLeftArrowClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-backward"></i></button>
                     <button onclick="controls.keyboardRightArrowClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-forward"></i></button>
@@ -25,10 +23,10 @@
                     <button onclick="controls.keyboardVolumeUpClick()" type="button" class="btn btn-primary btn-lg"><i class="fas fa-volume-up"></i></button>
                 </div>
             </div>
-            <div class="row pb-2">
+            <div class="row pb-4">
                 <div class="col">
                     <div class="input-group input-group-lg">
-                        <input id="textInput" type="text" class="form-control" placeholder="">
+                        <input id="textInput" type="text" autocapitalize="none" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -38,7 +36,7 @@
         </section>
 
         <footer id="footer">
-            <div class="row pt-2 pb-5">
+            <div class="row pt-4 pb-5">
                 <div class="col">
                     <div class="d-grid">
                         <button onclick="controls.mouseLeftClick()" type="button" class="btn btn-primary btn-lg">Left</button>
