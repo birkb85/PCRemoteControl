@@ -22,80 +22,80 @@ async function appStart(timeStamp) {
     console.log("App Started.");
 }
 
-function appLoop(timeStamp) {
+async function appLoop(timeStamp) {
     // Time passed
     timePassed = timeStamp - timeStampOld;
     timeStampOld = timeStamp;
 
-    appUpdate();
+    await appUpdate();
 
     window.requestAnimationFrame(appLoop);
 }
 
-function appUpdate() {
+async function appUpdate() {
     // Update Controls
     if (controls.hasUpdate) {
         controls.hasUpdate = false;
 
         if (controls.mouseMoveX < 0 || controls.mouseMoveX > 0 ||
             controls.mouseMoveY < 0 || controls.mouseMoveY > 0) {
-            controlHub.mouseMove(controls.mouseMoveX, controls.mouseMoveY);
+            await controlHub.mouseMove(controls.mouseMoveX, controls.mouseMoveY);
             controls.mouseMoveX = 0;
             controls.mouseMoveY = 0;
         }
 
         if (controls.mouseLeftClicked) {
-            controlHub.mouseLeftClick();
+            await controlHub.mouseLeftClick();
             controls.mouseLeftClicked = false;
         }
 
         if (controls.mouseRightClicked) {
-            controlHub.mouseRightClick();
+            await controlHub.mouseRightClick();
             controls.mouseRightClicked = false;
         }
 
         if (controls.keyboardText !== "") {
-            controlHub.keyboard(controls.keyboardText);
+            await controlHub.keyboard(controls.keyboardText);
             controls.keyboardText = "";
         }
 
         if (controls.keyboardBackspaceClicked) {
-            controlHub.keyboardBackspace();
+            await controlHub.keyboardBackspace();
             controls.keyboardBackspaceClicked = false;
         }
 
         if (controls.keyboardEnterClicked) {
-            controlHub.keyboardEnter();
+            await controlHub.keyboardEnter();
             controls.keyboardEnterClicked = false;
         }
 
         if (controls.keyboardLeftArrowClicked) {
-            controlHub.keyboardLeftArrow();
+            await controlHub.keyboardLeftArrow();
             controls.keyboardLeftArrowClicked = false;
         }
 
         if (controls.keyboardRightArrowClicked) {
-            controlHub.keyboardRightArrow();
+            await controlHub.keyboardRightArrow();
             controls.keyboardRightArrowClicked = false;
         }
 
         if (controls.keyboardPlayPauseClicked) {
-            controlHub.keyboardPlayPause();
+            await controlHub.keyboardPlayPause();
             controls.keyboardPlayPauseClicked = false;
         }
 
         if (controls.keyboardVolumeMuteClicked) {
-            controlHub.keyboardVolumeMute();
+            await controlHub.keyboardVolumeMute();
             controls.keyboardVolumeMuteClicked = false;
         }
 
         if (controls.keyboardVolumeDownClicked) {
-            controlHub.keyboardVolumeDown();
+            await controlHub.keyboardVolumeDown();
             controls.keyboardVolumeDownClicked = false;
         }
 
         if (controls.keyboardVolumeUpClicked) {
-            controlHub.keyboardVolumeUp();
+            await controlHub.keyboardVolumeUp();
             controls.keyboardVolumeUpClicked = false;
         }
     }

@@ -27,7 +27,8 @@ class ControlHub {
             .build();
 
         this.connection.onclose(async () => {
-            await this.connectionStart();
+            console.log("SignalR Connection Closed.");
+            //await this.connectionStart();
         });
     }
 
@@ -37,119 +38,147 @@ class ControlHub {
             console.log("SignalR Connected.");
         } catch (err) {
             console.log(err);
-            setTimeout(this.connectionStart, 5000);
+            //setTimeout(this.connectionStart, 5000);
         }
     };
 
-    mouseMove(amountX, amountY) {
+    async mouseMove(amountX, amountY) {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_MOVE, amountX, amountY).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    mouseLeftClick() {
+    async mouseLeftClick() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_LEFT_CLICK).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    mouseRightClick() {
+    async mouseRightClick() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_RIGHT_CLICK).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    mouseScrollVertical(amount) {
+    async mouseScrollVertical(amount) {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_SCROLL_VERTICAL, amount).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    mouseScrollHorizontal(amount) {
+    async mouseScrollHorizontal(amount) {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_MOUSE_SCROLL_HORIZONTAL, amount).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboard(text) {
+    async keyboard(text) {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD, text).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardBackspace() {
+    async keyboardBackspace() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_BACKSPACE).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardEnter() {
+    async keyboardEnter() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_ENTER).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardLeftArrow() {
+    async keyboardLeftArrow() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_LEFT_ARROW).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardRightArrow() {
+    async keyboardRightArrow() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_RIGHT_ARROW).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardPlayPause() {
+    async keyboardPlayPause() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_PLAY_PAUSE).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardVolumeMute() {
+    async keyboardVolumeMute() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_MUTE).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardVolumeDown() {
+    async keyboardVolumeDown() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_DOWN).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 
-    keyboardVolumeUp() {
+    async keyboardVolumeUp() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_UP).catch(function (err) {
                 return console.error(err.toString());
             });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
         }
     }
 }
