@@ -1,45 +1,72 @@
 ﻿@page
 @model PCRemoteControl.Pages.IndexModel
-@{
+@section Scripts {
+    @* Before *@
+    <script src="~/js/control_hub.js" asp-append-version="true"></script>
+    <script src="~/js/controls.js" asp-append-version="true"></script>
+    @* Main *@
+    <script src="~/js/app.js" asp-append-version="true"></script>
+    @* After *@
+    <script src="~/js/events.js" asp-append-version="true"></script>
 }
 
-@* TODO BB 2023-10-25. Der mangler Head Body og alt det der.. *@
-<p>Hej med dig!</p>
+<div class="container-fluid">
+    <div class="flex-container">
+        <header id="header">
+            <div class="row pt-2 pb-2">
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-pause"></i></button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-volume-mute"></i></button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-volume-down"></i></button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-volume-up"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb-2">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-backspace"></i></button>
+                        <button type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.11/signalr.min.js" integrity="sha512-BmbgtaebZ4BB5jiHMIauI5fFKc7dXo0Hqm7nmkHnoq63qBaYQWg1bhcNoaIBkfpw5bymrPEM8ap2fCB6ObSK4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    let connection = new signalR.HubConnectionBuilder()
-        .withUrl("/controlhub")
-        .configureLogging(signalR.LogLevel.Warning) // Trace, Information, Warning, Error
-        .build();
+        <section id="content" class="content">
+        </section>
 
-    connection.onclose(async () => {
-        // connectedIcon.style.color = "#e11e1e";
-        await connectionStart();
-    });
-
-    async function connectionStart() {
-        try {
-            // connectedIcon.style.color = "#e11e1e";
-            await connection.start();
-            console.log("SignalR Connected.");
-
-            mouseMove(100, 100); /* TODO BB 2023-10-25. Tester at flytte musen et stykke når man er forbundet. */
-            // connectedIcon.style.color = "#1ee11e";
-        } catch (err) {
-            console.log(err);
-            // connectedIcon.style.color = "#e11e1e";
-            setTimeout(connectionStart, 5000);
-        }
-    };
-
-    function mouseMove(amountX, amountY) {
-        if (connection.state === signalR.HubConnectionState.Connected) {
-            connection.invoke("MouseMove", amountX, amountY).catch(function (err) {
-                return console.error(err.toString());
-            });
-        }
-    }
-
-    connectionStart();
-</script>
+        <footer id="footer">
+            <div class="row pt-2 pb-2">
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary">Left</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary">Right</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

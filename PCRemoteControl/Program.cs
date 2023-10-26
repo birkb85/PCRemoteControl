@@ -43,6 +43,8 @@ if (port == null)
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 app.MapRazorPages();
 app.MapHub<ControlHub>("/controlhub");
 

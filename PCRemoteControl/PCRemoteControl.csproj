@@ -23,4 +23,9 @@
   <ItemGroup>
     <None Include="C:\VisualStudioProjects\PCRemoteControl\PCRemoteControl\.editorconfig" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
 </Project>
