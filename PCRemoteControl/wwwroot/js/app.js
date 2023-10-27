@@ -5,6 +5,8 @@ const header = document.getElementById("header");
 const content = document.getElementById("content");
 const footer = document.getElementById("footer");
 const textInput = document.getElementById("textInput");
+const touchpad = document.getElementById("touchpad");
+const scrollpad = document.getElementById("scrollpad");
 
 // Time passed
 let timeStampOld = 0;
@@ -37,11 +39,19 @@ async function appUpdate() {
     if (controls.hasUpdate) {
         controls.hasUpdate = false;
 
-        if (controls.mouseMoveX < 0 || controls.mouseMoveX > 0 ||
-            controls.mouseMoveY < 0 || controls.mouseMoveY > 0) {
-            await controlHub.mouseMove(controls.mouseMoveX, controls.mouseMoveY);
-            controls.mouseMoveX = 0;
-            controls.mouseMoveY = 0;
+        if (controls.isTouchpad) {
+            if (controls.mouseMoveX < 0 || controls.mouseMoveX > 0 ||
+                controls.mouseMoveY < 0 || controls.mouseMoveY > 0) {
+                await controlHub.mouseMove(controls.mouseMoveX, controls.mouseMoveY);
+                controls.mouseMoveX = 0;
+                controls.mouseMoveY = 0;
+            }
+        } else {
+            if (controls.mouseMoveY < 0 || controls.mouseMoveY > 0) {
+                await controlHub.mouseScrollVertical(controls.mouseMoveY);
+                controls.mouseMoveX = 0;
+                controls.mouseMoveY = 0;
+            }
         }
 
         if (controls.mouseLeftClicked) {

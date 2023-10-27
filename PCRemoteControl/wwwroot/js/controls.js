@@ -6,6 +6,8 @@ class Controls {
 
         this.mouseDown = false;
 
+        this.isTouchpad = true; // false = scrollpad
+
         this.mouseX = 0;
         this.mouseY = 0;
         this.mouseOldX = 0;
@@ -35,8 +37,10 @@ class Controls {
         this.keyboardVolumeUpClicked = false;
     }
 
-    touchStart(x, y) {
+    touchStart(x, y, isTouchpad) {
         this.mouseDown = true;
+
+        this.isTouchpad = isTouchpad;
 
         textInput.blur();
 

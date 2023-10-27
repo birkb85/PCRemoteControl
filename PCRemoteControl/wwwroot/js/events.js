@@ -21,8 +21,12 @@ textInput.onkeyup = textInputKeyup;
 
 // Mouse
 function mouseDownEvent(event) {
-    if (event.type === "mousedown" && event.target.id === "content") {
-        controls.touchStart(event.clientX, event.clientY);
+    if (event.type === "mousedown") {
+        if (event.target.id === "touchpad") {
+            controls.touchStart(event.clientX, event.clientY, true);
+        } else if (event.target.id === "scrollpad") {
+            controls.touchStart(event.clientX, event.clientY, false);
+        }
     }
 }
 function mouseMoveEvent(event) {
@@ -49,7 +53,18 @@ function touchStartHandler(event) {
         let y = event.touches[0].pageY;
         //debugLabel.innerText = "Touch Start: " + touches + ", pos:  x: " + x + ", y: " + y;
         //console.log("Touch Start: " + touches + ", pos:  x: " + x + ", y: " + y);
-        controls.touchStart(x, y);
+        controls.touchStart(x, y, true);
+        event.preventDefault();
+    }
+}
+function scrollStartHandler(event) {
+    //touches++;
+    if (event.touches) {
+        let x = event.touches[0].pageX;
+        let y = event.touches[0].pageY;
+        //debugLabel.innerText = "Touch Start: " + touches + ", pos:  x: " + x + ", y: " + y;
+        //console.log("Touch Start: " + touches + ", pos:  x: " + x + ", y: " + y);
+        controls.touchStart(x, y, false);
         event.preventDefault();
     }
 }
@@ -77,9 +92,13 @@ function touchEndHandler(event) {
 //    console.log("Touch Cancel: " + touches);
 //    event.preventDefault();
 //}
-content.addEventListener("touchstart", touchStartHandler, { passive: false });
-content.addEventListener("touchmove", touchMoveHandler, { passive: false });
-content.addEventListener("touchend", touchEndHandler, { passive: false });
+touchpad.addEventListener("touchstart", touchStartHandler, { passive: false });
+touchpad.addEventListener("touchmove", touchMoveHandler, { passive: false });
+touchpad.addEventListener("touchend", touchEndHandler, { passive: false });
+//document.addEventListener("touchcancel", touchCancelHandler, {passive:false});
+scrollpad.addEventListener("touchstart", scrollStartHandler, { passive: false });
+scrollpad.addEventListener("touchmove", touchMoveHandler, { passive: false });
+scrollpad.addEventListener("touchend", touchEndHandler, { passive: false });
 //document.addEventListener("touchcancel", touchCancelHandler, {passive:false});
 
 // Start app after page load

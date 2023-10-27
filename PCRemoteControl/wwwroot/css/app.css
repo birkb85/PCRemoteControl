@@ -19,12 +19,26 @@ header {
     color: #fff;*/
 }
 
-section.content {
-    /*background-color: #000000;*/
+section#content {
+    /*background-color: #ff6a00ff;*/
     flex: 1;
+    display: flex;
+    flex-direction: row;
 }
 
 footer {
     /*background-color: #FFC107;
     color: #333;*/
+}
+
+#touchpad {
+    background-color: #404040;
+    flex: 1;
+    border-radius: 0.5rem;
+}
+
+#scrollpad {
+    background-color: #505050;
+    width: 60px;
+    border-radius: 0.5rem;
 }
