@@ -53,14 +53,16 @@ class Controls {
     }
 
     touchMove(x, y) {
-        this.mouseX = Math.round(x);
-        this.mouseY = Math.round(y);
-        this.mouseMoveX += Math.round((this.mouseX - this.mouseOldX) * this.mouseMoveMultiplier);
-        this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.mouseMoveMultiplier);
-        this.mouseOldX = this.mouseX;
-        this.mouseOldY = this.mouseY;
+        if (this.mouseDown) {
+            this.mouseX = Math.round(x);
+            this.mouseY = Math.round(y);
+            this.mouseMoveX += Math.round((this.mouseX - this.mouseOldX) * this.mouseMoveMultiplier);
+            this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.mouseMoveMultiplier);
+            this.mouseOldX = this.mouseX;
+            this.mouseOldY = this.mouseY;
 
-        this.hasUpdate = true;
+            this.hasUpdate = true;
+        }
     }
 
     touchEnd() {

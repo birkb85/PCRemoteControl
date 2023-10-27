@@ -20,13 +20,13 @@ function textInputKeyup(event) {
 textInput.onkeyup = textInputKeyup;
 
 // Mouse
-function mouseMoveEvent(event) {
-    if (event.type === "mousemove" && event.target.id === "content") {
-        controls.touchMove(event.clientX, event.clientY);
-    }
-}
 function mouseDownEvent(event) {
     if (event.type === "mousedown" && event.target.id === "content") {
+        controls.touchStart(event.clientX, event.clientY);
+    }
+}
+function mouseMoveEvent(event) {
+    if (event.type === "mousemove") {
         controls.touchMove(event.clientX, event.clientY);
     }
 }
@@ -35,8 +35,8 @@ function mouseUpEvent(event) {
         controls.touchEnd();
     }
 }
-document.addEventListener("mousemove", mouseMoveEvent);
 document.addEventListener("mousedown", mouseDownEvent);
+document.addEventListener("mousemove", mouseMoveEvent);
 document.addEventListener("mouseup", mouseUpEvent);
 
 // Touch
