@@ -17,6 +17,7 @@ class Controls {
         this.mouseMoveY = 0;
         this.mouseMoveMultiplier = 1.5;
 
+        this.scrollMultiplier = 3;
         this.scrollTrail = 0;
 
         this.mouseLeftClicked = false;
@@ -65,8 +66,12 @@ class Controls {
         if (this.mouseDown) {
             this.mouseX = Math.round(x);
             this.mouseY = Math.round(y);
-            this.mouseMoveX += Math.round((this.mouseX - this.mouseOldX) * this.mouseMoveMultiplier);
-            this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.mouseMoveMultiplier);
+            if (this.isTouchpad) {
+                this.mouseMoveX += Math.round((this.mouseX - this.mouseOldX) * this.mouseMoveMultiplier);
+                this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.mouseMoveMultiplier);
+            } else {
+                this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.scrollMultiplier);
+            }
             this.mouseOldX = this.mouseX;
             this.mouseOldY = this.mouseY;
 

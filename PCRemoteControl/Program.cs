@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Logging.EventLog;
 using PCRemoteControl.Services;
 using PCRemoteControl.Hubs;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,3 +51,12 @@ app.MapRazorPages();
 app.MapHub<ControlHub>("/controlhub");
 
 app.Run($"http://{url}:{port}");
+
+// Start minimized
+// https://stackoverflow.com/questions/44675085/minimize-console-at-app-startup-c-sharp
+// https://learn.microsoft.com/da-dk/windows/win32/api/winuser/nf-winuser-showwindow?WT.mc_id=DOP-MVP-5001655
+[DllImport("User32.dll", CallingConvention = CallingConvention.StdCall, SetLastError = true)]
+[return: MarshalAs(UnmanagedType.Bool)]
+static extern bool ShowWindow([In] IntPtr hWnd, [In] int nCmdShow);
+IntPtr handle = Process.GetCurrentProcess().MainWindowHandle;
+ShowWindow(handle, 6); // 6 = SW_MINIMIZE
