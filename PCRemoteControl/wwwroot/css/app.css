@@ -32,13 +32,13 @@ footer {
 }
 
 #touchpad {
-    background-color: #404040;
+    background-color: #31373D;
     flex: 1;
     border-radius: 0.5rem;
 }
 
 #scrollpad {
-    background-color: #505050;
+    background-color: #424951;
     width: 60px;
     border-radius: 0.5rem;
 }
