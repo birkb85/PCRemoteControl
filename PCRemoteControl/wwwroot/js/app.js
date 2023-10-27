@@ -48,10 +48,16 @@ async function appUpdate() {
             }
         } else {
             if (controls.mouseMoveY < 0 || controls.mouseMoveY > 0) {
-                await controlHub.mouseScrollVertical(controls.mouseMoveY);
-                controls.mouseMoveX = 0;
+                await controlHub.mouseScrollVertical(Math.round(controls.mouseMoveY));
+                controls.scrollTrail = controls.mouseMoveY;
                 controls.mouseMoveY = 0;
             }
+        }
+
+        if (!controls.mouseDown && (controls.scrollTrail < -1 || controls.scrollTrail > 1)) {
+            await controlHub.mouseScrollVertical(Math.round(controls.scrollTrail));
+            controls.scrollTrail = controls.scrollTrail * 0.95;
+            controls.hasUpdate = true;
         }
 
         if (controls.mouseLeftClicked) {

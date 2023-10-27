@@ -17,6 +17,8 @@ class Controls {
         this.mouseMoveY = 0;
         this.mouseMoveMultiplier = 1.5;
 
+        this.scrollTrail = 0;
+
         this.mouseLeftClicked = false;
         this.mouseRightClicked = false;
 
@@ -46,6 +48,9 @@ class Controls {
 
         this.mouseX = Math.round(x);
         this.mouseY = Math.round(y);
+        this.mouseMoveX = 0;
+        this.mouseMoveY = 0;
+        this.scrollTrail = 0;
         this.mouseOldX = this.mouseX;
         this.mouseOldY = this.mouseY;
 
