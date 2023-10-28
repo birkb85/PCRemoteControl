@@ -1,12 +1,12 @@
-# PCRemoteControl (work in progress)
+# PCRemoteControl
 
-A windows service that makes it possible to control the keyboard and mouse on the PC remotely from a browser.
+A windows application that makes it possible to control the keyboard and mouse on the PC remotely from a browser.
 
-## How to publish executable and build installer
+![screenshot of app](PCRemoteControl/wwwroot/assets/screenshot.png)
 
-### Publish PCRemoteControl executable
+## Publish executable
 
-Publish the PCRemoteControl project with a Folder profile with settings like theese:
+Publish the PCRemoteControl project using a folder profile with settings like theese:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -29,24 +29,42 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <ProjectGuid>cd43d481-aca3-4f17-b699-afe102bb6123</ProjectGuid>
-    <SelfContained>true</SelfContained>
+    <ProjectGuid>[GUID]</ProjectGuid>
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
 </Project>
 ```
 
-Theese are the important publish settings:
-* Deployment mode: Self-contained
-* Produce single file: checked
-* Enable ReadyToRun compilation: checked
-* Trim unused assemblies (in preview): unchecked
+## Running executable
 
-### Build PCRemoteControlSetup installer
+Before running the application make sure to:
 
-Build the PCRemoteControlSetup project with the Release configuration.
+* Download and install the .NET 7 runtime:
+https://aka.ms/dotnet-core-applaunch?missing_runtime=true&arch=x64&rid=win10-x64&apphost_version=7.0.12
 
-The MSI installer is then located here:
+* Download and install the .NET 7 framework:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.AspNetCore.App&framework_version=7.0.0&arch=x64&rid=win10-x64
 
-```
-[VSProjectsFolder]\PCRemoteControl\PCRemoteControlSetup\bin\x64\Release\
-```
+* Set the listening port:
+In the "appsettings.json" file you are able to specify which port the PC is listening on.
+Default is "8080".
+
+* Consider giving the PC a static ip.
+
+* Also consider making a shortcut to the executable and place the shortcut in the "shell:startup" folder.
+(press Win+R, write "shell:startup" and press enter, to open the folder)
+This will make the application run when the user logges on.
+
+* Run the executable: "PCRemoteControl.exe".
+
+* Make a firewall rule on the PC so the application is able to be reached from other devices on the network.
+
+## Connect to the PC through the browser on your phone
+
+* Connect your smart phone / device to the same network as the PC.
+
+* Open up the browser on your phone and connect to the PC using the ip and listening port:
+Ex: "http://192.168.1.200:8080".
+
+* Install the PWA app to the home screen so it is easy to find and use.
+Using it as a PWA app will also make it fill the screen to the browser stuff is not visible.
