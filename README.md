@@ -2,7 +2,9 @@
 
 A windows application that makes it possible to control the keyboard and mouse on the PC remotely from a browser.
 
-![screenshot of app](PCRemoteControl/wwwroot/assets/screenshot.png)
+Below is a screenshot of the PWA app running on the phone.
+
+![screenshot of PWA app](PCRemoteControl/wwwroot/assets/screenshot.png)
 
 ## Publish executable
 
@@ -53,7 +55,7 @@ Default is "8080".
 
 * Also consider making a shortcut to the executable and place the shortcut in the "shell:startup" folder.
 (press Win+R, write "shell:startup" and press enter, to open the folder)
-This will make the application run when the user logges on.
+This will make the application run when the user logs on.
 
 * Run the executable: "PCRemoteControl.exe".
 
@@ -67,4 +69,4 @@ This will make the application run when the user logges on.
 Ex: "http://192.168.1.200:8080".
 
 * Install the PWA app to the home screen so it is easy to find and use.
-Using it as a PWA app will also make it fill the screen to the browser stuff is not visible.
+Using it as a PWA app will also make it fill the screen so the browser stuff is not visible.
