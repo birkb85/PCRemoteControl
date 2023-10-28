@@ -8,8 +8,8 @@ Below is a screenshot of the PWA app running on the phone.
 
 ## Publish executable
 
-Skip this step if you are using a prepublished release.
-[Release](https://github.com/birkb85/PCRemoteControl/releases)
+Skip this step if you are using a prepublished release:
+[Releases](https://github.com/birkb85/PCRemoteControl/releases)
 
 Publish the PCRemoteControl project using a folder profile with settings like theese:
 
