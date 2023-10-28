@@ -1,7 +1,7 @@
 {
   "name": "PC Remote Control",
   "short_name": "PC Remote",
-  "description": "A windows service that makes it possible to control the keyboard and mouse on the PC remotely from a browser.",
+  "description": "A windows application that makes it possible to control the keyboard and mouse on the PC remotely from a browser.",
   "icons": [
     {
       "src": " /assets/icons/icon192.png",

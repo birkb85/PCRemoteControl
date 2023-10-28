@@ -6,11 +6,11 @@ namespace PCRemoteControl.Hubs;
 public class ControlHub : Hub
 {
     private readonly InputService inputService;
-    private readonly ILogger<WindowsBackgroundService> logger;
+    private readonly ILogger<ControlHub> logger;
 
     public ControlHub(
         InputService inputService,
-        ILogger<WindowsBackgroundService> logger)
+        ILogger<ControlHub> logger)
     {
         this.inputService = inputService;
         this.logger = logger;
