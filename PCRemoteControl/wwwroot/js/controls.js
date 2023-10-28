@@ -38,6 +38,7 @@ class Controls {
         this.keyboardVolumeMuteClicked = false;
         this.keyboardVolumeDownClicked = false;
         this.keyboardVolumeUpClicked = false;
+        this.keyboardEscapeClicked = false;
     }
 
     touchStart(x, y, isTouchpad) {
@@ -143,6 +144,11 @@ class Controls {
 
     keyboardVolumeUpClick() {
         this.keyboardVolumeUpClicked = true;
+        this.hasUpdate = true;
+    }
+
+    keyboardEscapeClick() {
+        this.keyboardEscapeClicked = true;
         this.hasUpdate = true;
     }
 }

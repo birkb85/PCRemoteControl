@@ -85,4 +85,9 @@ public class ControlHub : Hub
     {
         inputService.KeyboardVolumeUp();
     }
+
+    public void KeyboardEscape()
+    {
+        inputService.KeyboardEscape();
+    }
 }

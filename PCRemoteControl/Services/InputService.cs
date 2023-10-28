@@ -696,4 +696,39 @@ public sealed class InputService
 
         SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
     }
+
+    public void KeyboardEscape()
+    {
+        Input[] inputs = new Input[]
+        {
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0x1b,
+                        dwFlags = (uint)KeyEventF.KeyDown,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            },
+            new Input
+            {
+                type = (int)InputType.Keyboard,
+                u = new InputUnion
+                {
+                    ki = new KeyboardInput
+                    {
+                        wVk = 0x1b,
+                        dwFlags = (uint)KeyEventF.KeyUp,
+                        dwExtraInfo = GetMessageExtraInfo()
+                    }
+                }
+            }
+        };
+
+        SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+    }
 }

@@ -18,6 +18,7 @@ const CONTROLHUB_KEYBOARD_PLAY_PAUSE = "KeyboardPlayPause";
 const CONTROLHUB_KEYBOARD_VOLUME_MUTE = "KeyboardVolumeMute";
 const CONTROLHUB_KEYBOARD_VOLUME_DOWN = "KeyboardVolumeDown";
 const CONTROLHUB_KEYBOARD_VOLUME_UP = "KeyboardVolumeUp";
+const CONTROLHUB_KEYBOARD_ESCAPE = "KeyboardEscape";
 
 class ControlHub {
     constructor() {
@@ -175,6 +176,16 @@ class ControlHub {
     async keyboardVolumeUp() {
         if (this.connection.state === signalR.HubConnectionState.Connected) {
             this.connection.invoke(CONTROLHUB_KEYBOARD_VOLUME_UP).catch(function (err) {
+                return console.error(err.toString());
+            });
+        } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+            await this.connectionStart();
+        }
+    }
+
+    async keyboardEscape() {
+        if (this.connection.state === signalR.HubConnectionState.Connected) {
+            this.connection.invoke(CONTROLHUB_KEYBOARD_ESCAPE).catch(function (err) {
                 return console.error(err.toString());
             });
         } else if (this.connection.state === signalR.HubConnectionState.Disconnected) {

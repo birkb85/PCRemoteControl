@@ -114,5 +114,10 @@ async function appUpdate() {
             await controlHub.keyboardVolumeUp();
             controls.keyboardVolumeUpClicked = false;
         }
+
+        if (controls.keyboardEscapeClicked) {
+            await controlHub.keyboardEscape();
+            controls.keyboardEscapeClicked = false;
+        }
     }
 }
