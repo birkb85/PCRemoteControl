@@ -24,13 +24,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <ExcludeApp_Data>false</ExcludeApp_Data>
     <LaunchSiteAfterPublish>true</LaunchSiteAfterPublish>
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
-    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <LastUsedPlatform>x64</LastUsedPlatform>
     <PublishProvider>FileSystem</PublishProvider>
-    <PublishUrl>bin\Release\net7.0\publish\</PublishUrl>
+    <PublishUrl>bin\Release\net7.0-windows\publish\</PublishUrl>
     <WebPublishMethod>FileSystem</WebPublishMethod>
     <_TargetId>Folder</_TargetId>
     <SiteUrlToLaunchAfterPublish />
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishReadyToRun>true</PublishReadyToRun>
