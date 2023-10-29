@@ -1,38 +1,26 @@
-using Microsoft.Extensions.Logging.Configuration;
-using Microsoft.Extensions.Logging.EventLog;
-using PCRemoteControl.Services;
-using PCRemoteControl.Hubs;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
+using PCRemoteControl.Forms;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace PCRemoteControl;
 
-builder.Services.AddRazorPages();
-builder.Services.AddSignalR();
-
-if (OperatingSystem.IsWindows())
+internal static class Program
 {
-    LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(builder.Services);
+    /// <summary>
+    ///  The main entry point for the application.
+    /// </summary>
+    static Mutex mutex = new Mutex(true, "{1729B10F-EBDA-4EBC-BE01-B7EC33D618D1}");
+    [STAThread]
+    static void Main()
+    {
+        if (mutex.WaitOne(TimeSpan.Zero, true))
+        {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new MainForm());
+        }
+        else
+        {
+            MessageBox.Show("PC Remote Control is already running.");
+        }
+    }
 }
-
-builder.Services.AddSingleton<InputService>();
-
-string? url = builder.Configuration["WebProtocolSettings:Url"];
-if (url == null)
-{
-    url = "*";
-}
-string? port = builder.Configuration["WebProtocolSettings:Port"];
-if (port == null)
-{
-    port = "8080";
-}
-
-var app = builder.Build();
-
-app.UseStaticFiles();
-
-app.MapRazorPages();
-app.MapHub<ControlHub>("/controlhub");
-
-app.Run($"http://{url}:{port}");
