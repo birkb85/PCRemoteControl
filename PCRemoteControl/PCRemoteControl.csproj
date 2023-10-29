@@ -6,7 +6,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>dotnet-PCRemoteControl-ff9cf9f9-8980-4329-a152-2b652812ff79</UserSecretsId>
-		<FileVersion>1.0.3.0</FileVersion>
+		<FileVersion>1.1.0.0</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
