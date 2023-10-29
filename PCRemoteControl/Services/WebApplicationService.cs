@@ -4,10 +4,10 @@ namespace PCRemoteControl.Services;
 
 public sealed class WebApplicationService
 {
-    readonly WebApplication app;
-    readonly string port;
+    private WebApplication? app;
+    public bool isRunning { get; private set; } = false;
 
-    public WebApplicationService()
+    public void Run(string port)
     {
         var builder = WebApplication.CreateBuilder();
 
@@ -15,10 +15,6 @@ public sealed class WebApplicationService
         builder.Services.AddSignalR();
 
         builder.Services.AddSingleton<InputService>();
-
-        string? configPort = builder.Configuration["WebProtocolSettings:Port"];
-        configPort ??= "8080";
-        port = configPort;
 
         app = builder.Build();
 
@@ -28,15 +24,15 @@ public sealed class WebApplicationService
         app.MapHub<ControlHub>("/controlhub");
 
         app.RunAsync($"http://*:{port}");
+        isRunning = true;
     }
 
     public void Stop()
     {
-        _ = app.StopAsync();
-    }
-
-    public string GetPort()
-    {
-        return port;
+        if (app != null)
+        {
+            _ = app.StopAsync();
+        }
+        isRunning = false;
     }
 }

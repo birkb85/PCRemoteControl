@@ -14,6 +14,7 @@ using System.Windows.Forms;
 namespace PCRemoteControl.Forms;
 public partial class MainForm : Form
 {
+    readonly SettingsService settingsService;
     readonly WebApplicationService webApplicationService;
     bool shouldCloseForm = false;
 
@@ -21,26 +22,26 @@ public partial class MainForm : Form
     {
         InitializeComponent();
 
-        webApplicationService = new();
-        string port = webApplicationService.GetPort();
+        settingsService = new SettingsService();
 
-        string hostName = Dns.GetHostName();
-        IPHostEntry ipHostEntry = Dns.GetHostEntry(hostName);
-        string url = "";
-        foreach (IPAddress ipAddress in ipHostEntry.AddressList)
-        {
-            if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
-            {
-                url = $"http://{ipAddress.ToString()}:{port}";
-            }
-        }
-        urlLabel.Text = url;
+        string port = settingsService.ServerPort;
+        portTextBox.Text = port;
+
+        bool showAtStartup = settingsService.ShowAtStartup;
+        showAtStartupCheckBox.Checked = showAtStartup;
+
+        webApplicationService = new();
+        StartServer();
     }
 
     private void MainForm_Shown(object sender, EventArgs e)
     {
         notifyIcon.Visible = true;
-        MinimizeToTray();
+
+        if (!settingsService.ShowAtStartup)
+        {
+            MinimizeToTray();
+        }
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -96,5 +97,62 @@ public partial class MainForm : Form
     {
         shouldCloseForm = true;
         Close();
+    }
+
+    private void showAtStartupCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        settingsService.ShowAtStartup = showAtStartupCheckBox.Checked;
+        settingsService.Save();
+        settingsService.Reload();
+    }
+
+    private void startStopButton_Click(object sender, EventArgs e)
+    {
+        if (webApplicationService.isRunning)
+        {
+            StopServer();
+        }
+        else
+        {
+            StartServer();
+        }
+    }
+
+    private void StartServer()
+    {
+        string port = portTextBox.Text;
+        if (port != settingsService.ServerPort)
+        {
+            settingsService.ServerPort = port;
+            settingsService.Save();
+            settingsService.Reload();
+        }
+
+        webApplicationService.Run(port);
+
+        portTextBox.Enabled = false;
+        startStopButton.Text = "Stop Server";
+
+        string hostName = Dns.GetHostName();
+        IPHostEntry ipHostEntry = Dns.GetHostEntry(hostName);
+        string url = "";
+        foreach (IPAddress ipAddress in ipHostEntry.AddressList)
+        {
+            if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+            {
+                url = $"http://{ipAddress.ToString()}:{port}";
+            }
+        }
+        urlLabel.Text = url;
+    }
+
+    private void StopServer()
+    {
+        webApplicationService.Stop();
+
+        portTextBox.Enabled = true;
+        startStopButton.Text = "Start Server";
+
+        urlLabel.Text = "Start server to display url";
     }
 }

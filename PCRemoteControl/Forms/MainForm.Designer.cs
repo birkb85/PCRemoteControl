@@ -30,24 +30,28 @@ partial class MainForm
     {
         components=new System.ComponentModel.Container();
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-        label=new Label();
+        connectLabel=new Label();
         notifyIcon=new NotifyIcon(components);
         contextMenuStrip=new ContextMenuStrip(components);
         openToolStripMenuItem=new ToolStripMenuItem();
         closePCRemoteControlToolStripMenuItem=new ToolStripMenuItem();
         urlLabel=new Label();
+        showAtStartupCheckBox=new CheckBox();
+        portTextBox=new TextBox();
+        portLabel=new Label();
+        startStopButton=new Button();
         contextMenuStrip.SuspendLayout();
         SuspendLayout();
         // 
-        // label
+        // connectLabel
         // 
-        label.AutoSize=true;
-        label.Font=new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-        label.Location=new Point(12, 9);
-        label.Name="label";
-        label.Size=new Size(359, 20);
-        label.TabIndex=0;
-        label.Text="Connect to PC Remote Control with the following url:";
+        connectLabel.AutoSize=true;
+        connectLabel.Font=new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+        connectLabel.Location=new Point(12, 46);
+        connectLabel.Name="connectLabel";
+        connectLabel.Size=new Size(359, 20);
+        connectLabel.TabIndex=0;
+        connectLabel.Text="Connect to PC Remote Control with the following url:";
         // 
         // notifyIcon
         // 
@@ -81,21 +85,67 @@ partial class MainForm
         // 
         urlLabel.AutoSize=true;
         urlLabel.Font=new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-        urlLabel.Location=new Point(12, 29);
+        urlLabel.Location=new Point(12, 66);
         urlLabel.Name="urlLabel";
         urlLabel.Size=new Size(94, 37);
         urlLabel.TabIndex=1;
         urlLabel.Text="http://";
         // 
+        // showAtStartupCheckBox
+        // 
+        showAtStartupCheckBox.AutoSize=true;
+        showAtStartupCheckBox.Location=new Point(327, 119);
+        showAtStartupCheckBox.Margin=new Padding(3, 4, 3, 4);
+        showAtStartupCheckBox.Name="showAtStartupCheckBox";
+        showAtStartupCheckBox.Size=new Size(214, 24);
+        showAtStartupCheckBox.TabIndex=2;
+        showAtStartupCheckBox.Text="Show this window at startup";
+        showAtStartupCheckBox.UseVisualStyleBackColor=true;
+        showAtStartupCheckBox.CheckedChanged+=showAtStartupCheckBox_CheckedChanged;
+        // 
+        // portTextBox
+        // 
+        portTextBox.Location=new Point(56, 14);
+        portTextBox.Margin=new Padding(3, 4, 3, 4);
+        portTextBox.Name="portTextBox";
+        portTextBox.Size=new Size(114, 27);
+        portTextBox.TabIndex=4;
+        portTextBox.Text="test";
+        // 
+        // portLabel
+        // 
+        portLabel.AutoSize=true;
+        portLabel.Location=new Point(12, 17);
+        portLabel.Name="portLabel";
+        portLabel.Size=new Size(38, 20);
+        portLabel.TabIndex=5;
+        portLabel.Text="Port:";
+        // 
+        // startStopButton
+        // 
+        startStopButton.Location=new Point(176, 12);
+        startStopButton.Name="startStopButton";
+        startStopButton.Size=new Size(142, 31);
+        startStopButton.TabIndex=6;
+        startStopButton.Text="Start Server";
+        startStopButton.UseVisualStyleBackColor=true;
+        startStopButton.Click+=startStopButton_Click;
+        // 
         // MainForm
         // 
-        AutoScaleDimensions=new SizeF(7F, 15F);
+        AutoScaleDimensions=new SizeF(8F, 20F);
         AutoScaleMode=AutoScaleMode.Font;
-        ClientSize=new Size(384, 161);
+        ClientSize=new Size(553, 156);
+        Controls.Add(startStopButton);
+        Controls.Add(portLabel);
+        Controls.Add(portTextBox);
+        Controls.Add(showAtStartupCheckBox);
         Controls.Add(urlLabel);
-        Controls.Add(label);
+        Controls.Add(connectLabel);
+        Font=new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
         FormBorderStyle=FormBorderStyle.FixedSingle;
         Icon=(Icon)resources.GetObject("$this.Icon");
+        Margin=new Padding(3, 4, 3, 4);
         MaximizeBox=false;
         MdiChildrenMinimizedAnchorBottom=false;
         Name="MainForm";
@@ -110,10 +160,14 @@ partial class MainForm
 
     #endregion
 
-    private Label label;
+    private Label connectLabel;
     private NotifyIcon notifyIcon;
     private ContextMenuStrip contextMenuStrip;
     private ToolStripMenuItem openToolStripMenuItem;
     private ToolStripMenuItem closePCRemoteControlToolStripMenuItem;
     private Label urlLabel;
+    private CheckBox showAtStartupCheckBox;
+    private TextBox portTextBox;
+    private Label portLabel;
+    private Button startStopButton;
 }
