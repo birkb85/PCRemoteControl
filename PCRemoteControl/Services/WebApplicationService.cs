@@ -5,6 +5,7 @@ namespace PCRemoteControl.Services;
 public sealed class WebApplicationService
 {
     readonly WebApplication app;
+    readonly string port;
 
     public WebApplicationService()
     {
@@ -15,8 +16,9 @@ public sealed class WebApplicationService
 
         builder.Services.AddSingleton<InputService>();
 
-        string? port = builder.Configuration["WebProtocolSettings:Port"];
-        port ??= "8080";
+        string? configPort = builder.Configuration["WebProtocolSettings:Port"];
+        configPort ??= "8080";
+        port = configPort;
 
         app = builder.Build();
 
@@ -31,5 +33,10 @@ public sealed class WebApplicationService
     public void Stop()
     {
         _ = app.StopAsync();
+    }
+
+    public string GetPort()
+    {
+        return port;
     }
 }

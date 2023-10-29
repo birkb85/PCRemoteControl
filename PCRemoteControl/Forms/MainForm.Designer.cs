@@ -35,17 +35,19 @@ partial class MainForm
         contextMenuStrip=new ContextMenuStrip(components);
         openToolStripMenuItem=new ToolStripMenuItem();
         closePCRemoteControlToolStripMenuItem=new ToolStripMenuItem();
+        urlLabel=new Label();
         contextMenuStrip.SuspendLayout();
         SuspendLayout();
         // 
         // label
         // 
         label.AutoSize=true;
+        label.Font=new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
         label.Location=new Point(12, 9);
         label.Name="label";
-        label.Size=new Size(72, 15);
+        label.Size=new Size(359, 20);
         label.TabIndex=0;
-        label.Text="Hej med dig";
+        label.Text="Connect to PC Remote Control with the following url:";
         // 
         // notifyIcon
         // 
@@ -75,11 +77,22 @@ partial class MainForm
         closePCRemoteControlToolStripMenuItem.Text="Close PC Remote Control";
         closePCRemoteControlToolStripMenuItem.Click+=closePCRemoteControlToolStripMenuItem_Click;
         // 
+        // urlLabel
+        // 
+        urlLabel.AutoSize=true;
+        urlLabel.Font=new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+        urlLabel.Location=new Point(12, 29);
+        urlLabel.Name="urlLabel";
+        urlLabel.Size=new Size(94, 37);
+        urlLabel.TabIndex=1;
+        urlLabel.Text="http://";
+        // 
         // MainForm
         // 
         AutoScaleDimensions=new SizeF(7F, 15F);
         AutoScaleMode=AutoScaleMode.Font;
         ClientSize=new Size(384, 161);
+        Controls.Add(urlLabel);
         Controls.Add(label);
         FormBorderStyle=FormBorderStyle.FixedSingle;
         Icon=(Icon)resources.GetObject("$this.Icon");
@@ -102,4 +115,5 @@ partial class MainForm
     private ContextMenuStrip contextMenuStrip;
     private ToolStripMenuItem openToolStripMenuItem;
     private ToolStripMenuItem closePCRemoteControlToolStripMenuItem;
+    private Label urlLabel;
 }

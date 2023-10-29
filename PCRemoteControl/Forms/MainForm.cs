@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +22,19 @@ public partial class MainForm : Form
         InitializeComponent();
 
         webApplicationService = new();
+        string port = webApplicationService.GetPort();
+
+        string hostName = Dns.GetHostName();
+        IPHostEntry ipHostEntry = Dns.GetHostEntry(hostName);
+        string url = "";
+        foreach (IPAddress ipAddress in ipHostEntry.AddressList)
+        {
+            if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+            {
+                url = $"http://{ipAddress.ToString()}:{port}";
+            }
+        }
+        urlLabel.Text = url;
     }
 
     private void MainForm_Shown(object sender, EventArgs e)
