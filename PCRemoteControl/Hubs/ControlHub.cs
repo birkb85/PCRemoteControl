@@ -48,46 +48,46 @@ public class ControlHub : Hub
 
     public void KeyboardBackspace()
     {
-        inputService.KeyboardBackspace();
+        inputService.KeyboardVK(InputService.VK_BACK);
     }
 
     public void KeyboardEnter()
     {
-        inputService.KeyboardEnter();
+        inputService.KeyboardVK(InputService.VK_RETURN);
     }
 
     public void KeyboardLeftArrow()
     {
-        inputService.KeyboardLeftArrow();
+        inputService.KeyboardVK(InputService.VK_LEFT);
     }
 
     public void KeyboardRightArrow()
     {
-        inputService.KeyboardRightArrow();
+        inputService.KeyboardVK(InputService.VK_RIGHT);
     }
 
     public void KeyboardPlayPause()
     {
-        inputService.KeyboardPlayPause();
+        inputService.KeyboardVK(InputService.VK_MEDIA_PLAY_PAUSE);
     }
 
     public void KeyboardVolumeMute()
     {
-        inputService.KeyboardVolumeMute();
+        inputService.KeyboardVK(InputService.VK_VOLUME_MUTE);
     }
 
     public void KeyboardVolumeDown()
     {
-        inputService.KeyboardVolumeDown();
+        inputService.KeyboardVK(InputService.VK_VOLUME_DOWN);
     }
 
     public void KeyboardVolumeUp()
     {
-        inputService.KeyboardVolumeUp();
+        inputService.KeyboardVK(InputService.VK_VOLUME_UP);
     }
 
     public void KeyboardEscape()
     {
-        inputService.KeyboardEscape();
+        inputService.KeyboardVK(InputService.VK_ESCAPE);
     }
 }
