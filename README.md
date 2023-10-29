@@ -42,25 +42,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 
 ## Running executable
 
-Before running the application make sure to:
-
-* Download and install the .NET 7 runtime:
-https://aka.ms/dotnet-core-applaunch?missing_runtime=true&arch=x64&rid=win10-x64&apphost_version=7.0.12
-
-* Download and install the .NET 7 framework:
-https://aka.ms/dotnet-core-applaunch?framework=Microsoft.AspNetCore.App&framework_version=7.0.0&arch=x64&rid=win10-x64
-
-* Set the listening port:
-In the "appsettings.json" file you are able to specify which port the PC is listening on.
-Default is "8080".
-
 * Consider giving the PC a static ip.
 
-* Also consider making a shortcut to the executable and place the shortcut in the "shell:startup" folder.
+* Consider making a shortcut to the executable and place the shortcut in the "shell:startup" folder.
 (press Win+R, write "shell:startup" and press enter, to open the folder)
 This will make the application run when the user logs on.
 
 * Run the executable: "PCRemoteControl.exe".
+
+* When running the application for the first time be sure to install the .NET Runtime and the .NET Framework if prompted.
 
 * Make a firewall rule on the PC so the application is able to be reached from other devices on the network.
 
@@ -68,7 +58,7 @@ This will make the application run when the user logs on.
 
 * Connect your smart phone / device to the same network as the PC.
 
-* Open up the browser on your phone and connect to the PC using the ip and listening port:
+* Open up the browser on your phone and connect to the PC using the url displayed on the application window:
 Ex: "http://192.168.1.200:8080".
 
 * Install the PWA app to the home screen so it is easy to find and use.
