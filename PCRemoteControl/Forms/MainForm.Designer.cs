@@ -40,6 +40,8 @@ partial class MainForm
         portTextBox=new TextBox();
         portLabel=new Label();
         startStopButton=new Button();
+        label1=new Label();
+        label2=new Label();
         contextMenuStrip.SuspendLayout();
         SuspendLayout();
         // 
@@ -47,7 +49,7 @@ partial class MainForm
         // 
         connectLabel.AutoSize=true;
         connectLabel.Font=new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-        connectLabel.Location=new Point(12, 46);
+        connectLabel.Location=new Point(12, 58);
         connectLabel.Name="connectLabel";
         connectLabel.Size=new Size(359, 20);
         connectLabel.TabIndex=0;
@@ -85,7 +87,7 @@ partial class MainForm
         // 
         urlLabel.AutoSize=true;
         urlLabel.Font=new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-        urlLabel.Location=new Point(12, 66);
+        urlLabel.Location=new Point(12, 78);
         urlLabel.Name="urlLabel";
         urlLabel.Size=new Size(94, 37);
         urlLabel.TabIndex=1;
@@ -94,7 +96,7 @@ partial class MainForm
         // showAtStartupCheckBox
         // 
         showAtStartupCheckBox.AutoSize=true;
-        showAtStartupCheckBox.Location=new Point(327, 119);
+        showAtStartupCheckBox.Location=new Point(258, 131);
         showAtStartupCheckBox.Margin=new Padding(3, 4, 3, 4);
         showAtStartupCheckBox.Name="showAtStartupCheckBox";
         showAtStartupCheckBox.Size=new Size(214, 24);
@@ -123,7 +125,7 @@ partial class MainForm
         // 
         // startStopButton
         // 
-        startStopButton.Location=new Point(176, 12);
+        startStopButton.Location=new Point(330, 12);
         startStopButton.Name="startStopButton";
         startStopButton.Size=new Size(142, 31);
         startStopButton.TabIndex=6;
@@ -131,11 +133,29 @@ partial class MainForm
         startStopButton.UseVisualStyleBackColor=true;
         startStopButton.Click+=startStopButton_Click;
         // 
+        // label1
+        // 
+        label1.BorderStyle=BorderStyle.Fixed3D;
+        label1.Location=new Point(12, 125);
+        label1.Name="label1";
+        label1.Size=new Size(460, 2);
+        label1.TabIndex=7;
+        // 
+        // label2
+        // 
+        label2.BorderStyle=BorderStyle.Fixed3D;
+        label2.Location=new Point(12, 46);
+        label2.Name="label2";
+        label2.Size=new Size(460, 2);
+        label2.TabIndex=8;
+        // 
         // MainForm
         // 
         AutoScaleDimensions=new SizeF(8F, 20F);
         AutoScaleMode=AutoScaleMode.Font;
-        ClientSize=new Size(553, 156);
+        ClientSize=new Size(484, 161);
+        Controls.Add(label2);
+        Controls.Add(label1);
         Controls.Add(startStopButton);
         Controls.Add(portLabel);
         Controls.Add(portTextBox);
@@ -170,4 +190,6 @@ partial class MainForm
     private TextBox portTextBox;
     private Label portLabel;
     private Button startStopButton;
+    private Label label1;
+    private Label label2;
 }

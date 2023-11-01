@@ -6,7 +6,8 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>dotnet-PCRemoteControl-ff9cf9f9-8980-4329-a152-2b652812ff79</UserSecretsId>
-		<FileVersion>1.1.1.0</FileVersion>
+		<FileVersion>1.1.2.0</FileVersion>
+		<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,6 +21,10 @@
 
 	<ItemGroup>
 		<_WebToolingArtifacts Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Assets\icon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
