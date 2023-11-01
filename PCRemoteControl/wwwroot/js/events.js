@@ -10,9 +10,10 @@ function textInputKeyup(event) {
     } else if (event.keyCode == 13) {
         // Enter
         controls.keyboardEnterClick();
-    } else {
-        controls.keyboardTextInput(event.target.value);
         textInput.value = "";
+    } else {
+        //controls.keyboardTextInput(event.target.value);
+        controls.keyboardTextInput(event.key);
     }
 
     //console.log("Key Up: " + event.keyCode);
