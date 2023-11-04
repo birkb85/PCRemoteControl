@@ -134,3 +134,7 @@ async function appUpdate() {
         }
     }
 }
+
+function clearTextInput() {
+    textInput.value = "";
+}
