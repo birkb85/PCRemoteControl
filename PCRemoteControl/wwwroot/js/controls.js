@@ -19,6 +19,8 @@ class Controls {
 
         this.scrollMultiplier = 3;
         this.scrollTrail = 0;
+        this.scrollTrailLastTime = Date.now();
+        this.scrollTrailTimeout = 100;
 
         this.mouseLeftClicked = false;
         this.mouseRightClicked = false;
@@ -72,6 +74,7 @@ class Controls {
                 this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.mouseMoveMultiplier);
             } else {
                 this.mouseMoveY += Math.round((this.mouseY - this.mouseOldY) * this.scrollMultiplier);
+                this.scrollTrailLastTime = Date.now();
             }
             this.mouseOldX = this.mouseX;
             this.mouseOldY = this.mouseY;
@@ -83,10 +86,16 @@ class Controls {
     touchEnd() {
         this.mouseDown = false;
 
-        if (Date.now() - this.touchStartTime < this.touchClickTimeout &&
+        if (Date.now() - this.touchStartTime <= this.touchClickTimeout &&
             Math.abs(this.mouseX - this.touchStartMouseX) < this.touchClickDist &&
             Math.abs(this.mouseY - this.touchStartMouseY) < this.touchClickDist) {
             this.mouseLeftClicked = true;
+        }
+
+        if (!this.isTouchpad) {
+            if (Date.now() - this.scrollTrailLastTime > this.scrollTrailTimeout) {
+                this.scrollTrail = 0;
+            }
         }
 
         this.hasUpdate = true;
