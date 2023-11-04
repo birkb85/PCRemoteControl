@@ -2,11 +2,20 @@
 
 // Get elements
 const header = document.getElementById("header");
+const leftArrowButton = document.getElementById("leftArrowButton");
+const rightArrowButton = document.getElementById("rightArrowButton");
+const playPauseButton = document.getElementById("playPauseButton");
+const volumeMuteButton = document.getElementById("volumeMuteButton");
+const volumeDownButton = document.getElementById("volumeDownButton");
+const volumeUpButton = document.getElementById("volumeUpButton");
 const content = document.getElementById("content");
 const footer = document.getElementById("footer");
 const textInput = document.getElementById("textInput");
 const touchpad = document.getElementById("touchpad");
 const scrollpad = document.getElementById("scrollpad");
+
+// Window Resize
+let usingObserver = true;
 
 // Time passed
 let timeStampOld = 0;
@@ -19,6 +28,10 @@ async function appStart(timeStamp) {
     console.log("App Starting.");
 
     await controlHub.connectionStart();
+
+    if (!usingObserver) {
+        reportWindowSize(); // As fallback for observer report after loading stuff.
+    }
 
     window.requestAnimationFrame(appLoop);
     console.log("App Started.");

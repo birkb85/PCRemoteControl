@@ -1,5 +1,80 @@
 ﻿"use strict";
 
+// Window resize
+function setButtonLarge(element) {
+    element.classList.remove('btn-sm');
+    element.classList.add('btn-lg');
+}
+function setButtonMedium(element) {
+    element.classList.remove('btn-sm');
+    element.classList.remove('btn-lg');
+}
+function setButtonSmall(element) {
+    element.classList.add('btn-sm');
+    element.classList.remove('btn-lg');
+}
+function onResize(width) {
+    if (width >= 360) {
+        setButtonLarge(leftArrowButton);
+        setButtonLarge(rightArrowButton);
+        setButtonLarge(playPauseButton);
+        setButtonLarge(volumeMuteButton);
+        setButtonLarge(volumeDownButton);
+        setButtonLarge(volumeUpButton);
+    } else if (width >= 324) {
+        setButtonMedium(leftArrowButton);
+        setButtonMedium(rightArrowButton);
+        setButtonLarge(playPauseButton);
+        setButtonMedium(volumeMuteButton);
+        setButtonLarge(volumeDownButton);
+        setButtonLarge(volumeUpButton);
+    } else if (width >= 284) {
+        setButtonMedium(leftArrowButton);
+        setButtonMedium(rightArrowButton);
+        setButtonMedium(playPauseButton);
+        setButtonMedium(volumeMuteButton);
+        setButtonMedium(volumeDownButton);
+        setButtonMedium(volumeUpButton);
+    } else if (width >= 254) {
+        setButtonSmall(leftArrowButton);
+        setButtonSmall(rightArrowButton);
+        setButtonMedium(playPauseButton);
+        setButtonSmall(volumeMuteButton);
+        setButtonMedium(volumeDownButton);
+        setButtonMedium(volumeUpButton);
+    } else {
+        setButtonSmall(leftArrowButton);
+        setButtonSmall(rightArrowButton);
+        setButtonSmall(playPauseButton);
+        setButtonSmall(volumeMuteButton);
+        setButtonSmall(volumeDownButton);
+        setButtonSmall(volumeUpButton);
+    }
+}
+function reportWindowSize() {
+    let width = header.clientWidth; //window.innerWidth;
+    let height = header.clientHeight; //window.innerHeight;
+    onResize(width);
+    //console.log("Event App Size: W: " + width + ", H: " + height);
+    //touchpad.innerText = "Event App Size: W: " + width + ", H: " + height;
+}
+try {
+    const observer = new ResizeObserver((entries) => {
+        const entry = entries.find((entry) => entry.target === header);
+        let width = entry.contentBoxSize[0].inlineSize; //entry.devicePixelContentBoxSize[0].inlineSize;
+        let height = entry.contentBoxSize[0].blockSize; //entry.devicePixelContentBoxSize[0].blockSize;
+        onResize(width);
+        //console.log("Observer App Size: W: " + width + ", H: " + height);
+        //touchpad.innerText = "Observer App Size: W: " + width + ", H: " + height;
+    });
+    observer.observe(header, { box: "device-pixel-content-box" });
+} catch (error) {
+    console.warn("Fallback to window resize event. ResizeObserver Error: " + error);
+    usingObserver = false;
+    window.addEventListener("resize", reportWindowSize);
+    reportWindowSize();
+}
+
 // Text Input
 function textInputKeyup(event) {
     /*let value = event.target.value;*/
