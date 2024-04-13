@@ -94,6 +94,7 @@ class Controls {
 
         if (!this.isTouchpad) {
             if (Date.now() - this.scrollTrailLastTime > this.scrollTrailTimeout) {
+                this.mouseMoveY = 0;
                 this.scrollTrail = 0;
             }
         }
